@@ -118,7 +118,7 @@ public class ExecutorServiceTimeoutCache<K, V>
         // here since the ConcurrentHashMap.remove() call won't
         // actually remove the key unless the value is equal to the
         // original cacheValues reference.
-        if (prevCacheValues != null)
+        if (prevCacheValues != null && prevCacheValues.mFuture != null)
             prevCacheValues.mFuture.cancel(true);
         
         // Create a ScheduledFuture for the new cacheValues object that
